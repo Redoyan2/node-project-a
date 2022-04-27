@@ -34,8 +34,11 @@ app.get('/user/:id', (req, res)=>{
 
 //from ui//
 app.post('/user', (req, res)=>{
+    const user = req.body;
+    user.id = users.length + 1;
+    users.push(user);
     console.log(req.body);
-    res.send('post method success');
+    res.send(user);
 
 })
 
