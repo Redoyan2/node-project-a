@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
 
 
 const users = [
@@ -26,6 +31,13 @@ app.get('/user/:id', (req, res)=>{
     const user = users.find(user=>user.id ==id);
     res.send(user)
 });
+
+//from ui//
+app.post('/user', (req, res)=>{
+    console.log(req.body);
+    res.send('post method success');
+
+})
 
 app.listen(port, ()=>{
     console.log('listening to port', port);
